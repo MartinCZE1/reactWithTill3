@@ -1,0 +1,22 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import MainPage from "../pages/MainPage/MainPage";
+import Clicker from "./Clicker/Clicker";
+import CarCreateForm from "./CarCreateForm/CarCreateForm";
+import CarUpdateForm from "./CarUpdateForm/CarUpdateForm";
+import CarView from "./CarView/CarView";
+import CarList from "./CarList/CarList";
+
+export default function AppRoutes() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<MainPage />} />
+        <Route path="/clicker" element={<Clicker />} />
+        <Route path="/createcar" element={<CarCreateForm />} />
+        <Route path="/updatecar" element={<CarUpdateForm />} />
+        <Route path="/car" element={<CarView />} />
+        <Route path="/cars" element={<CarList />} />
+      </Routes>
+    </BrowserRouter>
+  );
+}
