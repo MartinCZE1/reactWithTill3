@@ -13,8 +13,8 @@ export default function AppRoutes() {
         <Route path="/" element={<MainPage />} />
         <Route path="/clicker" element={<Clicker />} />
         <Route path="/createcar" element={<CarCreateForm />} />
-        <Route path="/updatecar" element={<CarUpdateForm />} />
-        <Route path="/car" element={<CarView />} />
+        <Route path="/updatecar/:id" element={<CarUpdateForm />} />
+        <Route path="/car/:id" element={<CarView />} />
         <Route path="/cars" element={<CarList />} />
       </Routes>
     </BrowserRouter>

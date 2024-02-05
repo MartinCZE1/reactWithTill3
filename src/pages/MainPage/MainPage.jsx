@@ -12,14 +12,14 @@ export default function MainPage() {
         <p>Go to create car</p>
       </Link>
 
-      <Link to={"/updatecar"}>
+      <Link to={"/updatecar/155555"}>
         <p>Go to update car</p>
       </Link>
 
-      <Link to={"/car"}>
+      <Link to={"/car/1515151511"}>
         <p>Go to view car</p>
       </Link>
-      
+
       <Link to={"/cars"}>
         <p>Go to list with cars</p>
       </Link>
