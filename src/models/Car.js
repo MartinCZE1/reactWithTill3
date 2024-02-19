@@ -7,6 +7,11 @@ export const getAllCars = async () => {
     method: "GET",
   });
   const data = await req.json();
+  return {
+    payload: data.payload,
+    msg: data.msg,
+    status: req.status,
+  };
 };
 
 export const getCar = async (id) => {
@@ -18,6 +23,11 @@ export const getCar = async (id) => {
     method: "GET",
   });
   const data = await req.json();
+  return {
+    payload: data.payload,
+    msg: data.msg,
+    status: req.status,
+  };
 };
 
 export const createCar = async (formData) => {
@@ -30,6 +40,11 @@ export const createCar = async (formData) => {
     body: JSON.stringify(formData),
   });
   const data = await req.json();
+  return {
+    payload: data.payload,
+    msg: data.msg,
+    status: req.status,
+  };
 };
 
 export const updateCar = async (id, formData) => {
@@ -42,6 +57,11 @@ export const updateCar = async (id, formData) => {
     body: JSON.stringify(formData),
   });
   const data = await req.json();
+  return {
+    payload: data.payload,
+    msg: data.msg,
+    status: req.status,
+  };
 };
 
 export const deleteCar = async (id) => {
@@ -53,4 +73,9 @@ export const deleteCar = async (id) => {
     method: "DELETE",
   });
   const data = await req.json();
+  return {
+    payload: data.payload,
+    msg: data.msg,
+    status: req.status,
+  };
 };
