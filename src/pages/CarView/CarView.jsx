@@ -19,6 +19,23 @@ export default function CarView() {
     }
   };
 
+  const handleChange = (e) => {
+    setFormData(e.target.value);
+  };
+
+  const handleDelete = async (e) => {
+    e.preventDefault();
+
+    if (car.model === formData) {
+      const data = await deleteCar(id);
+      if (data.status === 200) {
+      } else {
+      }
+    } else {
+      setInfo("Wrong input");
+    }
+  };
+
   useEffect(() => {
     load();
   }, []);
@@ -47,6 +64,13 @@ export default function CarView() {
       <p>{car.model}</p>
       <p>{car.color}</p>
       <p>{car.price}</p>
+
+      <form>
+        <input type="text" onChange={handleChange} placeholder={car.model} />
+        <button>Delete car</button>
+        <p>{info}</p>
+      </form>
+
       <Link to={"/"}>
         <p>Go back</p>
       </Link>
