@@ -17,7 +17,7 @@ export default function CarList() {
 
   useEffect(() => {
     load();
-  });
+  }, []);
 
   if (isLoaded === null) {
     return (

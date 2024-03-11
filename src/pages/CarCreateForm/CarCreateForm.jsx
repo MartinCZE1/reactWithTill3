@@ -58,9 +58,7 @@ export default function CarCreateForm() {
           placeholder="Enter price"
           onChange={(e) => handleChange(e)}
         />
-        <button onClick={handlePost}>
-          Create car
-        </button>
+        <button onClick={handlePost}>Create car</button>
       </form>
       <Link to={"/"}>
         <p>Go back</p>
