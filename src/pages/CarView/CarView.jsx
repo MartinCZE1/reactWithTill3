@@ -25,11 +25,12 @@ export default function CarView() {
 
   const handleDelete = async (e) => {
     e.preventDefault();
-
     if (car.model === formData) {
       const data = await deleteCar(id);
       if (data.status === 200) {
+        navigate("/");
       } else {
+        setInfo(data.msg);
       }
     } else {
       setInfo("Wrong input");
@@ -65,9 +66,13 @@ export default function CarView() {
       <p>{car.color}</p>
       <p>{car.price}</p>
 
+      <Link to={`/updatecar/${id}`}>
+        <p>Update car</p>
+      </Link>
+
       <form>
         <input type="text" onChange={handleChange} placeholder={car.model} />
-        <button>Delete car</button>
+        <button onClick={handleDelete}>Delete car</button>
         <p>{info}</p>
       </form>
 
