@@ -19,6 +19,14 @@ export default function MainPage() {
       <Link to={"/students"}>
         <p>Student</p>
       </Link>
+      
+      <Link to={"/createphone"}>
+        <p>Create phone</p>
+      </Link>
+
+      <Link to={"/phones"}>
+        <p>Phone</p>
+      </Link>
     </>
   );
 }

@@ -1,20 +1,20 @@
 import { Link, useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { getStudent, deleteStudent } from "../../models/Student";
+import { getPhone, deletePhone } from "../../models/Phone";
 
-export default function CarView() {
+export default function PhoneView() {
   const { id } = useParams();
-  const [student, setStudent] = useState();
+  const [phone, setPhone] = useState();
   const [isLoaded, setLoaded] = useState(false);
   const [info, setInfo] = useState();
   const [formData, setFormData] = useState();
   const navigate = useNavigate();
 
   const load = async () => {
-    const data = await getStudent(id);
+    const data = await getPhone(id);
     if (data.status === 500) return setLoaded(null);
     if (data.status === 200) {
-      setStudent(data.payload);
+      setPhone(data.payload);
       setLoaded(true);
     }
   };
@@ -25,8 +25,8 @@ export default function CarView() {
 
   const handleDelete = async (e) => {
     e.preventDefault();
-    if (student.name === formData) {
-      const data = await deleteStudent(id);
+    if (phone.brand === formData) {
+      const data = await deletePhone(id);
       if (data.status === 200) {
         navigate("/");
       } else {
@@ -44,7 +44,7 @@ export default function CarView() {
   if (isLoaded === null) {
     return (
       <>
-        <p>Student not found</p>
+        <p>Phone not found</p>
       </>
     );
   }
@@ -52,26 +52,27 @@ export default function CarView() {
   if (!isLoaded) {
     return (
       <>
-        <p>Student is loading</p>
+        <p>Phone is loading</p>
       </>
     );
   }
 
   return (
     <>
-      <h1>View Student</h1>
+      <h1>View phone</h1>
       <p>{id}</p>
-      <p>{student.name}</p>
-      <p>{student.isic}</p>
-      <p>{student.classroom}</p>
+      <p>{phone.brand}</p>
+      <p>{phone.os}</p>
+      <p>{phone.color}</p>
+      <p>{phone.price}</p>
 
-      <Link to={`/updatestudent/${id}`}>
-        <p>Update student</p>
+      <Link to={`/updatephone/${id}`}>
+        <p>Update phone</p>
       </Link>
 
       <form>
-        <input type="text" onChange={handleChange} placeholder={student.name} />
-        <button onClick={handleDelete}>Delete student</button>
+        <input type="text" onChange={handleChange} placeholder={phone.brand} />
+        <button onClick={handleDelete}>Delete phone</button>
         <p>{info}</p>
       </form>
 

@@ -12,6 +12,12 @@ import StudentView from "./StudentView/StudentView";
 import StudentList from "./StudentList/StudentList";
 import CreatedStudent from "./StudentCreateForm/CreatedStudent";
 
+import PhoneCreateForm from "./PhoneCreateForm/PhoneCreateForm";
+import PhoneUpdateForm from "./PhoneUpdateForm/PhoneUpdateForm";
+import PhoneView from "./PhoneView/PhoneView";
+import PhoneList from "./PhoneList/PhoneList";
+import CreatedPhone from "./PhoneCreateForm/CreatedPhone";
+
 export default function AppRoutes() {
   return (
     <BrowserRouter>
@@ -27,7 +33,13 @@ export default function AppRoutes() {
         <Route path="/updatestudent/:id" element={<StudentUpdateForm />} />
         <Route path="/student/:id" element={<StudentView />} />
         <Route path="/students" element={<StudentList />} />
-        <Route path="/createdstudent/:id" element={<CreatedStudent />}></Route>
+        <Route path="/createdstudent/:id" element={<CreatedStudent />} />
+
+        <Route path="/createphone" element={<PhoneCreateForm />} />
+        <Route path="/updatephone/:id" element={<PhoneUpdateForm />} />
+        <Route path="/phone/:id" element={<PhoneView />} />
+        <Route path="/phones" element={<PhoneList />} />
+        <Route path="/createdphone/:id" element={<CreatedPhone />} />
       </Routes>
     </BrowserRouter>
   );
