@@ -1,20 +1,20 @@
 import { Link, useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { getStudent, deleteStudent } from "../../models/Student";
+import { getDeodorant, deleteDeodorant } from "../../models/Deodorant";
 
-export default function CarView() {
+export default function DeodorantView() {
   const { id } = useParams();
-  const [student, setStudent] = useState();
+  const [deodorant, setDeodorant] = useState();
   const [isLoaded, setLoaded] = useState(false);
   const [info, setInfo] = useState();
   const [formData, setFormData] = useState();
   const navigate = useNavigate();
 
   const load = async () => {
-    const data = await getStudent(id);
+    const data = await getDeodorant(id);
     if (data.status === 500) return setLoaded(null);
     if (data.status === 200) {
-      setStudent(data.payload);
+      setDeodorant(data.payload);
       setLoaded(true);
     }
   };
@@ -25,8 +25,8 @@ export default function CarView() {
 
   const handleDelete = async (e) => {
     e.preventDefault();
-    if (student.name === formData) {
-      const data = await deleteStudent(id);
+    if (deodorant.brand === formData) {
+      const data = await deleteDeodorant(id);
       if (data.status === 200) {
         navigate("/");
       } else {
@@ -44,7 +44,7 @@ export default function CarView() {
   if (isLoaded === null) {
     return (
       <>
-        <p>Student not found</p>
+        <p>Deodorant not found</p>
       </>
     );
   }
@@ -52,26 +52,26 @@ export default function CarView() {
   if (!isLoaded) {
     return (
       <>
-        <p>Student is loading</p>
+        <p>Deodorant is loading</p>
       </>
     );
   }
 
   return (
     <>
-      <h1>View Student</h1>
+      <h1>View Deodorant</h1>
       <p>{id}</p>
-      <p>{student.name}</p>
-      <p>{student.isic}</p>
-      <p>{student.classroom}</p>
+      <p>{deodorant.brand}</p>
+      <p>{deodorant.duration}</p>
+      <p>{deodorant.price}</p>
 
-      <Link to={`/updatestudent/${id}`}>
-        <p>Update student</p>
+      <Link to={`/updatedeodorant/${id}`}>
+        <p>Update deodorant</p>
       </Link>
 
       <form>
-        <input type="text" onChange={handleChange} placeholder={student.name} />
-        <button onClick={handleDelete}>Delete student</button>
+        <input type="text" onChange={handleChange} placeholder={deodorant.brand} />
+        <button onClick={handleDelete}>Delete deodorant</button>
         <p>{info}</p>
       </form>
 

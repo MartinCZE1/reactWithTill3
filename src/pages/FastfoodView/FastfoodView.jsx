@@ -1,20 +1,20 @@
 import { Link, useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { getStudent, deleteStudent } from "../../models/Student";
+import { getFastfood, deleteFastfood } from "../../models/Fastfood";
 
-export default function CarView() {
+export default function FastfoodView() {
   const { id } = useParams();
-  const [student, setStudent] = useState();
+  const [fastfood, setFastfood] = useState();
   const [isLoaded, setLoaded] = useState(false);
   const [info, setInfo] = useState();
   const [formData, setFormData] = useState();
   const navigate = useNavigate();
 
   const load = async () => {
-    const data = await getStudent(id);
+    const data = await getFastfood(id);
     if (data.status === 500) return setLoaded(null);
     if (data.status === 200) {
-      setStudent(data.payload);
+      setFastfood(data.payload);
       setLoaded(true);
     }
   };
@@ -25,8 +25,8 @@ export default function CarView() {
 
   const handleDelete = async (e) => {
     e.preventDefault();
-    if (student.name === formData) {
-      const data = await deleteStudent(id);
+    if (fastfood.company === formData) {
+      const data = await deleteFastfood(id);
       if (data.status === 200) {
         navigate("/");
       } else {
@@ -44,7 +44,7 @@ export default function CarView() {
   if (isLoaded === null) {
     return (
       <>
-        <p>Student not found</p>
+        <p>Fastfood not found</p>
       </>
     );
   }
@@ -52,26 +52,26 @@ export default function CarView() {
   if (!isLoaded) {
     return (
       <>
-        <p>Student is loading</p>
+        <p>Fastfood is loading</p>
       </>
     );
   }
 
   return (
     <>
-      <h1>View Student</h1>
+      <h1>View Fastfood</h1>
       <p>{id}</p>
-      <p>{student.name}</p>
-      <p>{student.isic}</p>
-      <p>{student.classroom}</p>
+      <p>{fastfood.company}</p>
+      <p>{fastfood.menu}</p>
+      <p>{fastfood.price}</p>
 
-      <Link to={`/updatestudent/${id}`}>
-        <p>Update student</p>
+      <Link to={`/updatefastfood/${id}`}>
+        <p>Update fastfood</p>
       </Link>
 
       <form>
-        <input type="text" onChange={handleChange} placeholder={student.name} />
-        <button onClick={handleDelete}>Delete student</button>
+        <input type="text" onChange={handleChange} placeholder={fastfood.company} />
+        <button onClick={handleDelete}>Delete fastfood</button>
         <p>{info}</p>
       </form>
 
