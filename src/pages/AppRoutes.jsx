@@ -12,6 +12,18 @@ import StudentView from "./StudentView/StudentView";
 import StudentList from "./StudentList/StudentList";
 import CreatedStudent from "./StudentCreateForm/CreatedStudent";
 
+import DeodorantCreateForm from "./DeodorantCreateForm/DeodorantCreateForm";
+import DeodorantUpdateForm from "./DeodorantUpdateForm/DeodorantUpdateForm";
+import DeodorantView from "./DeodorantView/DeodorantView";
+import DeodorantList from "./DeodorantList/DeodorantList";
+import CreatedDeodorant from "./DeodorantCreateForm/CreatedDeodorant";
+
+import FastfoodCreateForm from "./FastfoodCreateForm/FastfoodCreateForm";
+import FastfoodUpdateForm from "./FastfoodUpdateForm/FastfoodUpdateForm";
+import FastfoodView from "./FastfoodView/FastfoodView";
+import FastfoodList from "./FastfoodList/FastfoodList";
+import CreatedFastfood from "./FastfoodCreateForm/CreatedFastfood";
+
 export default function AppRoutes() {
   return (
     <BrowserRouter>
@@ -29,6 +41,18 @@ export default function AppRoutes() {
         <Route path="/student/:id" element={<StudentView />} />
         <Route path="/students" element={<StudentList />} />
         <Route path="/createdstudent/:id" element={<CreatedStudent />}></Route>
+        
+        <Route path="/createdeodorant" element={<DeodorantCreateForm />} />
+        <Route path="/updatedeodorant/:id" element={<DeodorantUpdateForm />} />
+        <Route path="/deodorant/:id" element={<DeodorantView />} />
+        <Route path="/deodorants" element={<DeodorantList />} />
+        <Route path="/createddeodorant/:id" element={<CreatedDeodorant />}></Route>
+        
+        <Route path="/createfastfood" element={<FastfoodCreateForm />} />
+        <Route path="/updatefastfood/:id" element={<FastfoodUpdateForm />} />
+        <Route path="/fastfood/:id" element={<FastfoodView />} />
+        <Route path="/fastfoods" element={<FastfoodList />} />
+        <Route path="/createdfastfood/:id" element={<CreatedFastfood />}></Route>
       </Routes>
     </BrowserRouter>
   );
